@@ -1,0 +1,1 @@
+{"version":3,"file":"basicPlugin.js","sources":["../src/basicPlugin.js"],"sourcesContent":["class BasicPlugin {\n    constructor() {}\n    register() {}\n    call() {}\n    logout() {}\n}\nexport default BasicPlugin"],"names":[],"mappings":";;AAAA,MAAM,WAAW,CAAC;AAClB,IAAI,WAAW,GAAG,EAAE;AACpB,IAAI,QAAQ,GAAG,EAAE;AACjB,IAAI,IAAI,GAAG,EAAE;AACb,IAAI,MAAM,GAAG,EAAE;AACf;;;;"}
