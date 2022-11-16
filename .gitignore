@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+dist_esm
+dist_cjs
+*.local
+.nyc_output
+coverage/
