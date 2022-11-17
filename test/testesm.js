@@ -1,11 +1,12 @@
 import {
-    SyncPlugin
+    // SyncPlugin
+    syncPlugin
 } from "../dist_esm/index.js";
 // console.log('test', SyncPlugin)
 
 
 
-let syncPlugin = new SyncPlugin()
+// let syncPlugin = new SyncPlugin()
 let fn1 = (...a) => {
     console.log('fn1 params', ...a)
 }
