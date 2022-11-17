@@ -18,9 +18,8 @@
 
 ## usage
 ```js
-import {SyncPlugin} from 'plugincomb';
+import {syncPlugin} from 'plugincomb';
 
-let syncPlugin = new SyncPlugin()
 let fn1 = (...a) => {
     console.log('fn1 params', ...a)
 }
