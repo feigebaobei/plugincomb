@@ -13,5 +13,8 @@
     "t": "node test/testesm.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
 }
