@@ -1,7 +1,7 @@
 # plugincomb
 
 ## overview
-> 定义了四种插件。  
+> 定义了一种插件。  
 > 每种插件支持：  
     > 注册钩子及对应的方法  
     > 调用钩子对应的方法  
@@ -64,18 +64,24 @@ call(hookName, ...p)
 logout(hookName, fn?)  
 
 index.js
-输出各plugin
+输出各plugin的实例
 
 ### uml
 ```
           hook -------------> plugin ---------> index.js
-        缓存钩子对应的方法     (basicPlugin)       统一输出
+        缓存钩子对应的方法     (basicPlugin)       统一输出实例
                             (SyncPlugin)
                             (AsyncPlugin)
                             (...Plugin)
 ```
 
+## 本地运行
+1. git clone xxxx  
+2. 需要全局安装rollup  
+3. npm run r  
+4. npm rum t  
+
 ## todo
-> 未来迭代计划。
-> 未来迭代计划。
-> 未来迭代计划。
+> 完善其他插件  
+> package.json中的引入输出key  
+> 抽象出basicPlugin  
