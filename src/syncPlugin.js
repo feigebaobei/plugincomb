@@ -49,6 +49,7 @@ class SyncPlugin extends BasicPlugin{
             .logout(fn)
     }
     // 先做成可以注销一个方法的
+    // todo fix
     logout(hookName, fn) {
         if (this._hookMap.has(hookName)) {
             if (fn) {

@@ -19,19 +19,23 @@
 ## usage
 ```js
 import {syncPlugin} from 'plugincomb';
-
+// 定义方法
 let fn1 = (...a) => {
     console.log('fn1 params', ...a)
 }
 let fn2 = (...a) => {
     console.log('fn2 params', ...a)
 }
+// 注册钩子，并添加方法
 syncPlugin.register('hookName', fn1)
 syncPlugin.register('hookName', fn2)
 console.log('syncPlugin', syncPlugin._hookMap.get('hookName'))
 // syncPlugin.register('hookName1', fn) // 可以创建多个钩子
+// 调用钩子
 syncPlugin.call('hookName', 'a', 'b')   // 调用指定的钩子。会依次、同步执行该钩子上的所有方法。
+// 注销钩子上的指定方法
 // syncPlugin.logout('hookName', fn1)      // 注销hookName钩子上的fn1方法
+// 注销钩子上的所有方法
 syncPlugin.logout('hookName')           // 注销hookName钩子上的所有方法
 syncPlugin.call('hookName', 'a', 'b')   // 验证是否会执行hook
 console.log('syncPlugin', syncPlugin._hookMap.get('hookName'))
@@ -40,12 +44,22 @@ console.log('syncPlugin', syncPlugin._hookMap.get('hookName'))
 ## api
 ```js
 plugincomb: {
-    SyncPlugin,
-    // AsyncPlugin,
-    // ParallelPlugin,
-    // FlowLinePlugin,
+    syncPlugin,
+    // asyncPlugin,
+    // parallelPlugin,
+    // flowLinePlugin,
+    // bailPlugin,
     // ...
 }
+// 注册钩子
+// 若钩子已经存在则为其添加方法
+// 否则创建新钩子并为其添加方法
+syncPlugin.register(hookName: any, fn: function)
+// 调用钩子
+// 会根据添加注册的顺序依次执行各方法
+syncPlugin.call(hookName: any)
+// 若指定了fn，则删除指定钩子上的该方法。否则注销该钩子。
+syncPlugin.logout(hookName: any, fn?: function)
 ```
 
 ## principle
@@ -62,13 +76,13 @@ register(hookName, fn)
 call(hookName, ...p)  
 logout(hookName, fn?)  
 
-index.js
+index.js  
 输出各plugin的实例
 
 ### uml
 ```
           hook -------------> plugin ---------> index.js
-        缓存钩子对应的方法     (basicPlugin)       统一输出实例
+        缓存钩子对应的方法     (BasicPlugin)       统一输出实例
                             (SyncPlugin)
                             (AsyncPlugin)
                             (...Plugin)
@@ -78,9 +92,8 @@ index.js
 1. git clone xxxx  
 2. 需要全局安装rollup  
 3. npm run r  
-4. npm rum t  
+4. npm run t  
 
 ## todo
 > 完善其他插件  
-> package.json中的引入输出key  
 > 抽象出basicPlugin  
