@@ -2,6 +2,8 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+dist_cjs
+dist_esm
 *.local
 .nyc_output
 coverage/

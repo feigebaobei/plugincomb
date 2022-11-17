@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "files": [
+    "src", "dist_esm", "dist_cjs"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "r": "rollup -c",
-    "t": "node test/test.js"
+    "t": "node test/testesm.js"
   },
   "author": "",
   "license": "ISC"
