@@ -10,9 +10,16 @@
   },
   "type": "module",
   "files": [
-    "src", "dist_esm", "dist_cjs"
+    "src",
+    "dist_esm",
+    "dist_cjs"
   ],
-  "keywords": ["plugin", "pluginable", "asyncplugin", "syncplugin"],
+  "keywords": [
+    "plugin",
+    "pluginable",
+    "asyncplugin",
+    "syncplugin"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "r": "rollup -c",
@@ -22,5 +29,8 @@
   "license": "ISC",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "jest": "^29.3.1"
   }
 }
