@@ -21,7 +21,8 @@
     "syncplugin"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "hi",
+    "jest": "jest",
     "r": "rollup -c",
     "t": "node test/testesm.js"
   },
