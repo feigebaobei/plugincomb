@@ -1,10 +1,13 @@
+// 考虑把它移到 __tests__ 目录
 import BasicPlugin from "./basicPlugin";
 import Hooks from "./hooks";
 class SyncPlugin extends BasicPlugin{
     constructor() {
         super()
-        // this._hook = new Hooks()
         this._hookMap = new Map()
+        // {
+        //     'str': hook
+        // }
     }
     register(hookName, fn) {
         // 是否存在指定hookName的钩子
@@ -23,39 +26,29 @@ class SyncPlugin extends BasicPlugin{
     hasRegistedHook(hookName) {
         return this._hookMap.has(hookName)
     }
-    // 得到所有已经注册的hook
-    // getRegistedHook(hookName) {
-    // 根据hookName得到hook
+    // 得到所有已经注册的hook | undefined
     getHook(hookName) {
-        if (hookName) {
-            return this._hookMap.get(hookName)
-        } else {
-            return null
-        }
-        return Array.from(this._hookMap.keys())
+        return this._hookMap.get(hookName)
     }
-
+    // 执行钩子上的所有方法
     call(hookName, ...p) {
-        this._hookMap.get(hookName) // hook
-            .call(...p)
+
+        let hook = this.getHook(hookName)
+        if (hook) {
+            hook.getRegistrant() // [fn, ...]
+                .forEach(fn => {
+                    fn(...p)
+                })
+        }
     }
-    // 注销钩子
-    logoutHook(hookName) {
-        this._hookMap.delete(hookName)
-    }
-    // 注销钩子上的方法
-    logoutHookFn(hookName, fn) {
-        this._hookMap.get(hookName) // hook
-            .logout(fn)
-    }
-    // 先做成可以注销一个方法的
-    // todo fix
+    // 注销钩子或钩子上的指定方法
     logout(hookName, fn) {
-        if (this._hookMap.has(hookName)) {
+        let hook = this.getHook(hookName)
+        if (hook) {
             if (fn) {
-                this._hookMap.get(hookName).logout(fn)
+                hook.logout(fn)
             } else {
-                this._hookMap.get(hookName).logout()
+                this._hookMap.delete(hookName)
             }
         }
     }
