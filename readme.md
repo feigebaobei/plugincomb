@@ -36,7 +36,7 @@ syncPlugin.call('hookName', 'a', 'b')   // 调用指定的钩子。会依次、�
 // 注销钩子上的指定方法
 // syncPlugin.logout('hookName', fn1)      // 注销hookName钩子上的fn1方法
 // 注销钩子上的所有方法
-syncPlugin.logout('hookName')           // 注销hookName钩子上的所有方法
+syncPlugin.logout('hookName')           // 注销hookName钩子
 syncPlugin.call('hookName', 'a', 'b')   // 验证是否会执行hook
 console.log('syncPlugin', syncPlugin._hookMap.get('hookName'))
 ```
@@ -58,7 +58,7 @@ syncPlugin.register(hookName: any, fn: function)
 // 调用钩子
 // 会根据添加注册的顺序依次执行各方法
 syncPlugin.call(hookName: any)
-// 若指定了fn，则删除指定钩子上的该方法。否则注销该钩子。
+// 注销钩子或钩子上的指定方法
 syncPlugin.logout(hookName: any, fn?: function)
 ```
 
@@ -90,10 +90,11 @@ index.js
 
 ## 本地运行
 1. git clone xxxx  
-2. 需要全局安装rollup  
-3. npm run r  
-4. npm run t  
+2. 安装依赖。需要全局安装rollup  
+3. 打包 npm run r  
+4. 测试 npm run t  
 
 ## todo
 > 完善其他插件  
 > 抽象出basicPlugin  
+> 引入jest,并测试。使用bdd+tdd。  
