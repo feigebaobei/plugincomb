@@ -21,12 +21,12 @@ class Hooks {
         if (fn) {
             this._box.delete(fn)
         } else {
-            this._box = new Map()
+            this.clear()
         }
     }
-    // clear() {
-    //     this._box = new Map()
-    // }
+    clear() {
+        this._box = new Map()
+    }
     size() {
         return this._box.size
     }
