@@ -41,6 +41,24 @@ syncPlugin.call('hookName', 'a', 'b')   // 验证是否会执行hook
 console.log('syncPlugin', syncPlugin._hookMap.get('hookName'))
 ```
 
+### 串行
+```js
+let seriesPlugin = new SeriesPlugin({
+    method: "bail"
+    // method: "waterFall"
+})
+```
+
+### 并行
+```js
+let ParallelPlugin = new ParallelPlugin({
+    method: "all",
+    // method: "allSettled",
+})
+```
+
+
+
 ## api
 ```js
 plugincomb: {
@@ -93,8 +111,19 @@ index.js
 2. 安装依赖。需要全局安装rollup  
 3. 打包 npm run r  
 4. 测试 npm run t  
+## 灵活 & 危险
+method属性是放在原型对象上的。  
+不提供改变此属性的方法，也不冻结此属性。  
+不冻结会有危险的极端情况。由使用者解决该极端情况。  
+该包提供了一个工作方法`basicPlugin.freeseMethod()`可以冻结。需要手动调用。  
+
+
 
 ## todo
 > 完善其他插件  
-> 抽象出basicPlugin  
+    > 串行          sericsPlugin
+    并行            parallelAllPlugin
+    流水线行        parallelAllSettledPlugin
+    promise         bailPlugin
 > 引入jest,并测试。使用bdd+tdd。  
+> 使用ts重写

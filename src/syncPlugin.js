@@ -1,6 +1,6 @@
-
+// 可能使用seriesPlugin代替
 import BasicPlugin from "./basicPlugin";
-import Hooks from "./hooks";
+// import Hooks from "./hooks";
 class SyncPlugin extends BasicPlugin{
     constructor() {
         super()
