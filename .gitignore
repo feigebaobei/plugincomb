@@ -4,6 +4,7 @@ dist
 dist-ssr
 dist_cjs
 dist_esm
+tscDist
 *.local
 .nyc_output
 coverage/
